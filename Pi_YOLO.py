@@ -6,12 +6,11 @@ import os
 from picamera import PiCamera
 from picamera.array import PiRGBArray
 
-ipcamera = 'http://192.168.2.64:8081/'
 
 print('running')
 dir = 'Images/'
 #Camera object
-cam = ipcamera
+cam = cv2.VideoCapture(0)
 #Settings
 cam.resolution = (640, 480)
 cam.framerate = 32

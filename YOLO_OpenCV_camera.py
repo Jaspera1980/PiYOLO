@@ -7,15 +7,16 @@ import credentials
 
 
 
-dir = 'Images/'
-#Video capture object
-#cam = cv2.VideoCapture(0)
-cam = cv2.VideoCapture(credentials.ipcamera)
 
-#manual args
-#Choose YOLO model
+#Choose Video capture object
+cam = cv2.VideoCapture(0)
+# cam = cv2.VideoCapture(credentials.ipcamera)
+
+#File locations
+dir = 'Images/'
 YOLO_path = 'YOLO_model'
 # YOLO_path = 'YOLO_tiny_model'
+
 #prediction thresholds
 confidence = 0.5
 threshold =0.3
