@@ -9,16 +9,20 @@ import credentials
 
 dir = 'Images/'
 #Video capture object
-cam = cv2.VideoCapture(0)
-#cam = cv2.VideoCapture(credentials.ipcamera)
+#cam = cv2.VideoCapture(0)
+cam = cv2.VideoCapture(credentials.ipcamera)
 
 #manual args
+#Choose YOLO model
 YOLO_path = 'YOLO_model'
-#YOLO_path = 'YOLO_tiny_model'
+# YOLO_path = 'YOLO_tiny_model'
+#prediction thresholds
 confidence = 0.5
 threshold =0.3
+
 # The duration in seconds of the video captured
 capture_duration = 30
+video_rec_frame_rate = 2
 person = False
 
 args = {'yolo':YOLO_path, 'confidence':confidence, 'threshold':threshold}
@@ -49,23 +53,6 @@ frame_height = int(cam.get(4))
 #loop
 while True:
 	ret, frame = cam.read()
-
-	# if person == True:
-	# 	person = False
-	# 	#if pi record video for x secs
-	# 	start_time = time.time()
-	# 	# Define the codec and create VideoWriter object.The output is stored in 'outpy.avi' file.
-	# 	out = cv2.VideoWriter(dir + 'video_' + str(time.ctime()) + '.avi', cv2.VideoWriter_fourcc('M', 'J', 'P', 'G'), 2, (frame_width, frame_height))
-	# 	print('recording video')
-	# 	while( int(time.time() - start_time) < capture_duration ):
-	# 		ret, frame = cam.read()
-	# 		if ret == True:
-	# 			out.write(frame)
-	# 		else:
-	# 			print('recording finished')
-	# 			break
-
-
 
 	cv2.imwrite(dir+ 'img.png', frame)
 	# load our input image and grab its spatial dimensions
@@ -149,18 +136,19 @@ while True:
 				person = True
 				#save image if person is detected
 				cv2.imwrite(dir + 'img_' + str(time.ctime()) + '.png', image)
-				#if pi record video for x secs
-				start_time = time.time()
-				# Define the codec and create VideoWriter object.The output is stored in 'outpy.avi' file.
-				out = cv2.VideoWriter(dir + 'video_' + str(time.ctime()) + '.avi', cv2.VideoWriter_fourcc('M', 'J', 'P', 'G'), 2, (frame_width, frame_height))
-				print('recording video')
-				while( int(time.time() - start_time) < capture_duration ):
-					ret, frame = cam.read()
-					if ret == True:
-						out.write(frame)
-					else:
-						print('recording finished')
-						break
+				"""Video recording"""
+				# #if pi record video for x secs
+				# start_time = time.time()
+				# # Define the codec and create VideoWriter object.The output is stored in 'outpy.avi' file.
+				# out = cv2.VideoWriter(dir + 'video_' + str(time.ctime()) + '.avi', cv2.VideoWriter_fourcc('M', 'J', 'P', 'G'), video_rec_frame_rate, (frame_width, frame_height))
+				# print('recording video')
+				# while( int(time.time() - start_time) < capture_duration ):
+				# 	ret, frame = cam.read()
+				# 	if ret == True:
+				# 		out.write(frame)
+				# 	else:
+				# 		print('recording finished')
+				# 		break
 
 
 	# show images
