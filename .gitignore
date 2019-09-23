@@ -1,2 +1,7 @@
 #Exclude private variables
 credentials.py
+
+#Exclude folders
+Images\
+YOLO_model\
+YOLO_tiny_model\
