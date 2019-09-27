@@ -1,0 +1,6 @@
+{
+  "ipcamera" : "ipcamera address",
+  "resolution" : [640, 480],
+  "fps" : 16,
+  "delta_thresh" : 5
+}

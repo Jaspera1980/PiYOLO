@@ -5,16 +5,9 @@ import cv2
 import os
 import credentials
 
-
-
-
 #Choose Video capture object
 cam = cv2.VideoCapture(0)
 # cam = cv2.VideoCapture(credentials.ipcamera)
-#Set camera resolution
-# cam.set(cv2.CAP_PROP_FRAME_WIDTH, 640)
-# cam.set(cv2.CAP_PROP_FRAME_HEIGHT, 480)
-
 
 #File locations
 dir = 'Images/'
